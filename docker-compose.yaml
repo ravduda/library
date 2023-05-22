@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  php:
+    build: .
+    container_name: php_library
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/html/:rw
+      - ./php.ini-development:/usr/local/etc/php/php.ini
+  phpmyadmin:
+    container_name: phpmyadmin_library
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      - PMA_ARBITRARY=1
+  db:
+    container_name: mysql_library
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql
+volumes:
+  db:
