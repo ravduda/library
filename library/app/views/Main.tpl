@@ -9,8 +9,9 @@
 </head>
 <body>
     {{include file="Navbar.tpl"}}
-    {block name=content}
-        
-    {/block}
+    <div class="max-w-screen-xl m-auto">
+        {block name=content}
+        {/block}
+    </div>
 </body>
 </html>
