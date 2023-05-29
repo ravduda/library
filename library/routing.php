@@ -3,11 +3,13 @@
 use core\App;
 use core\Utils;
 
+Utils::addRoute('hello', 'HelloCtrl');
+
 App::getRouter()->setDefaultRoute('login'); #default action
-//App::getRouter()->setLoginRoute('login'); #action to forward if no permissions
+App::getRouter()->setLoginRoute('login'); #action to forward if no permissions
 
 Utils::addRoute('login', 'LoginCtrl');
-// Utils::addRoute('logout', 'LogoutCtrl', ['user', 'admin']);
+Utils::addRoute('logout', 'Login', ['user', 'admin']);
 
 // Utils::addRoute('users', 'UserCtrl', ['admin']);
 // Utils::addRoute('addUser', 'UserCtrl', ['admin']);
