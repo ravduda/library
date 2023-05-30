@@ -9,9 +9,9 @@ $conf->app_root = '/library/public';   # project subfolder in domain (relative t
 # ---- Database config - values required by Medoo
 $conf->db_type = 'mysql';
 $conf->db_server = 'mysql_library';
-$conf->db_name = '_database_name';
-$conf->db_user = '_user';
-$conf->db_pass = '_password';
+$conf->db_name = 'library';
+$conf->db_user = 'root';
+$conf->db_pass = 'root';
 $conf->db_charset = 'utf8';
 
 # ---- Database config - optional values

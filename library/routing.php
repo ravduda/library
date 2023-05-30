@@ -19,7 +19,7 @@ Utils::addRoute('logout', 'Login', ['user', 'admin']);
 // Utils::addRoute('addAuthor', 'AuthorCtrl', ['admin']);
 // Utils::addRoute('rmAuthor', 'AuthorCtrl', ['admin']);
 
-// Utils::addRoute('titles', 'TitleCtrl');
+Utils::addRoute('titles', 'TitleCtrl');
 // Utils::addRoute('addTitle', 'TitleCtrl', ['admin']);
 // Utils::addRoute('rmTitle', 'TitleCtrl', ['admin']);
 
