@@ -20,6 +20,6 @@ class FormInput {
     }
 
     public getAndValidate(){
-        $this->value = $v->validateFromPost($name, $validationRules);
+        return $this->value = $v->validateFromPost($name, $validationRules);
     }
 }
