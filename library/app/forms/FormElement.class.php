@@ -2,7 +2,7 @@
 
 namespace app\forms;
 
-class FormInput {
+class FormElement {
     public $name;
     public $type;
     public $label;
