@@ -4,7 +4,7 @@
     class="block text-sm font-medium leading-6 text-gray-900"
     >{$inputElement->label}</label
   >
-  {if $inputElement->label=="select"}
+  {if $inputElement->type=="select"}
   <select
     name="role"
     id="role"
