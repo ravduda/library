@@ -2,6 +2,7 @@
 
 namespace app\forms;
 
+use core\Utils;
 use core\Validator;
 
 class FormElement {
@@ -23,6 +24,6 @@ class FormElement {
 
     public function getAndValidate(){
         $v = new Validator();
-        return $this->value = $v->validateFromPost($name, $validationRules);
+        $this->value = $v->validateFromPost($this->name, $this->validationRules);
     }
 }

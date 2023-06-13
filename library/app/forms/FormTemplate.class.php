@@ -20,8 +20,8 @@ class FormTemplate {
         return !empty($this->id);
     }
     public function getAndValidateInputs(){
-        foreach($this->formElements as &$fe){
-            $fe->getAndValidate();
+        foreach(array_keys($this->formElements) as $key){
+            $this->formElements[$key]->getAndValidate();
         }
         return !App::getMessages()->isError();
     }

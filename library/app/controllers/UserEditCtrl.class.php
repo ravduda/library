@@ -23,10 +23,4 @@ class UserEditCtrl{
         }
         $this->form->generateView("UserEdit.tpl");
     }
-
-    private function validateSave(){
-        if(empty(ParamUtils::getFromPost('id', true)))
-            return $this->validateData();
-        return false;
-    }
 }
