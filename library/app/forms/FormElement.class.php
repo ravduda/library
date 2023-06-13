@@ -2,6 +2,8 @@
 
 namespace app\forms;
 
+use core\Validator;
+
 class FormElement {
     public $name;
     public $type;

@@ -12,7 +12,7 @@ Utils::addRoute('login', 'LoginCtrl');
 Utils::addRoute('logout', 'LoginCtrl', ['user', 'admin']);
 
 Utils::addRoute('users', 'UserCtrl', ['admin']);
-Utils::addRoute('newUser', 'UserEditCtrl', ['admin']);
+Utils::addRoute('userform', 'UserEditCtrl', ['admin']);
 Utils::addRoute('saveUser', 'UserEditCtrl', ['admin']);
 // Utils::addRoute('rmUser', 'UserEditCtrl', ['admin']);
 

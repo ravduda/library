@@ -3,31 +3,56 @@
 namespace app\forms;
 
 use core\App;
+use core\Utils;
 use core\Validator;
 use app\forms\FormElement;
 
 class FormTemplate {
-    public $formElements;
+    public $formElements = array();
     public $id;
 
     public function getAndValidateId(){
+        $v = new Validator;
         $this->id = $v->validateFromCleanURL(1, [
-            $v = new Validator;
             "trim" => true,
-            "required" => false,
             "int" => true,
         ]);
-        return !empty($this->id)
+        return !empty($this->id);
     }
     public function getAndValidateInputs(){
-        for($i = 0; $i<count($formElements); $i++){
-            $this->formElements[$i]->getAndValidate();
+        foreach($this->formElements as &$fe){
+            $fe->getAndValidate();
         }
         return !App::getMessages()->isError();
     }
-    private function getDataArray(){return [];}
-    public function generateView(){
+    private function getDataArray(){
+        $dataArray = array();
+        foreach($this->formElements as $fe)
+            $dataArray[$fe->name] = $fe->value;
+        return $dataArray;
+    }
+    public function saveData($tableName){
+        try{
+            if($this->getAndValidateId()){
+                App::getDB()->update($tableName, $this->getDataArray(), ["id" => $this->id] );
+            }
+            else{
+                App::getDB()->insert($tableName, $this->getDataArray());
+            }
+        }
+        catch(\PDOException $e){
+            Utils::addErrorMessage("Wystąpił błąd zapisu do bazy");
+            if (App::getConf()->debug)
+                    Utils::addErrorMessage($e->getMessage());
+        }
+    }
+    public function generateView($name=null){
         App::getSmarty()->assign('elements', $this->formElements);
-        App::getSmarty()->display("Form.tpl");
+        if(empty($name)){
+            App::getSmarty()->display("Form.tpl");
+        }
+        else{
+            App::getSmarty()->display($name);
+        }
     }
 }

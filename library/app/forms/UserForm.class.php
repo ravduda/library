@@ -57,15 +57,4 @@ class UserForm extends FormTemplate{
             "role" => $this->role
         ];
     }
-
-    private function getDataArray(){
-        return [
-            "email" => $this->formElements["email"],
-            "pass" => $this->formElements["pass"],
-            "firstname" => $this->formElements["firstname"],
-            "lastname" => $this->formElements["lastname"],
-            "role" => $this->formElements["role"],
-        ];
-    }
-
 }
