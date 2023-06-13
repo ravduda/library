@@ -16,7 +16,7 @@ class FormTemplate {
             "trim" => true,
             "required" => false,
             "int" => true,
-        ])
+        ]);
     }
     public function getAndValidateInputs(){
         for($i = 0; $i<count($formElements); $i++){
@@ -24,7 +24,7 @@ class FormTemplate {
         }
         return !App::getMessages()->isError();
     }
-    private function getDataArray(){return []}
+    private function getDataArray(){return [];}
     public function generateView(){
         App::getSmarty()->assign('elements', $this->formElements);
         App::getSmarty()->display("Form.tpl");

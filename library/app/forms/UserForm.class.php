@@ -65,7 +65,7 @@ class UserForm extends FormTemplate{
             "firstname" => $this->formElements["firstname"],
             "lastname" => $this->formElements["lastname"],
             "role" => $this->formElements["role"],
-        ]
+        ];
     }
 
 }
