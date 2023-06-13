@@ -19,7 +19,7 @@ class FormElement {
         $this->options = $options;
     }
 
-    public getAndValidate(){
+    public function getAndValidate(){
         return $this->value = $v->validateFromPost($name, $validationRules);
     }
 }

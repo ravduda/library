@@ -13,7 +13,7 @@ class UserForm extends FormTemplate{
     public FormElement $lastname;
     public FormElement $role;
 
-    public __construct(){
+    public function __construct(){
         $this->id = new FormElement("id", "hidden", "", []);
         $this->email = new FormElement("email", "email", "email", [
             'trim' => true,
@@ -46,7 +46,7 @@ class UserForm extends FormTemplate{
             'required_message' => 'Podaj nazwisko',
             'validator_message' => 'Długoś nazwiska nie mieści się pomiędzy 2 a 40 znaków'
         ]);
-        $this->id = new FormElement("role", "select", "rola", [
+        $this->role = new FormElement("role", "select", "rola", [
             'trim' => true,
             'required' => true,
         ], ["user", "admin"]);
