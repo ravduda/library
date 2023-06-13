@@ -6,7 +6,6 @@ use app\forms\FormElement;
 use app\forms\FormTemplate;
 
 class UserForm extends FormTemplate{
-    public FormElement $id;
 	public FormElement $email;
 	public FormElement $pass;
     public FormElement $firstname;
@@ -14,7 +13,6 @@ class UserForm extends FormTemplate{
     public FormElement $role;
 
     public function __construct(){
-        $this->id = new FormElement("id", "hidden", "", []);
         $this->email = new FormElement("email", "email", "email", [
             'trim' => true,
             'required' => true,
@@ -52,7 +50,6 @@ class UserForm extends FormTemplate{
         ], ["user", "admin"]);
 
         $this->formElements = [
-            "id" => $this->id,
             "email" => $this->email,
             "pass" => $this->pass,
             "firstname" => $this->firstname,
@@ -60,4 +57,15 @@ class UserForm extends FormTemplate{
             "role" => $this->role
         ];
     }
+
+    private function getDataArray(){
+        return [
+            "email" => $this->formElements["email"],
+            "pass" => $this->formElements["pass"],
+            "firstname" => $this->formElements["firstname"],
+            "lastname" => $this->formElements["lastname"],
+            "role" => $this->formElements["role"],
+        ]
+    }
+
 }
