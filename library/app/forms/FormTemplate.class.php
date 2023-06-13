@@ -10,13 +10,14 @@ class FormTemplate {
     public $formElements;
     public $id;
 
-    public function __construct(){
-        $v = new Validator;
+    public function getAndValidateId(){
         $this->id = $v->validateFromCleanURL(1, [
+            $v = new Validator;
             "trim" => true,
             "required" => false,
             "int" => true,
         ]);
+        return !empty($this->id)
     }
     public function getAndValidateInputs(){
         for($i = 0; $i<count($formElements); $i++){
