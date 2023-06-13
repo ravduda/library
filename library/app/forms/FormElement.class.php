@@ -20,6 +20,7 @@ class FormElement {
     }
 
     public function getAndValidate(){
+        $v = new Validator();
         return $this->value = $v->validateFromPost($name, $validationRules);
     }
 }
