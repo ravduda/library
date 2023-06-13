@@ -51,6 +51,13 @@ class UserForm extends FormTemplate{
             'required' => true,
         ], ["user", "admin"]);
 
-        $this->formElements = [$this->id, $this->email, $this->pass, $this->firstname, $this->lastname, $this->role];
+        $this->formElements = [
+            "id" => $this->id,
+            "email" => $this->email,
+            "pass" => $this->pass,
+            "firstname" => $this->firstname,
+            "lastname" => $this->lastname,
+            "role" => $this->role
+        ];
     }
 }
