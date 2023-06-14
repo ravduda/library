@@ -46,6 +46,18 @@ class FormTemplate {
                     Utils::addErrorMessage($e->getMessage());
         }
     }
+    public function getFromDB($name){
+        try {
+            $record = App::getDB()->select($name, "*", ["id" => $this->id]);
+            foreach(array_keys($this->formElements) as $key){
+                $this->formElements[$key]->value = $record[0][$key];
+            }
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
+        }
+    }
     public function generateView($name=null){
         App::getSmarty()->assign('elements', $this->formElements);
         if(empty($name)){

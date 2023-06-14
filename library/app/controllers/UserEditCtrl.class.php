@@ -15,6 +15,9 @@ class UserEditCtrl{
     }
 
     public function action_userform(){
+        if($this->form->getAndValidateId()){
+            $this->form->getFromDB("user");
+        }
         $this->form->generateView("UserEdit.tpl");
     }
     public function action_saveUser(){
