@@ -45,6 +45,7 @@ class FormTemplate {
             if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
         }
+        return !App::getMessages()->isError();
     }
     public function getFromDB($name){
         try {
