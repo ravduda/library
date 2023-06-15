@@ -29,4 +29,10 @@ Utils::addRoute('titles', 'TitleCtrl');
 // Utils::addRoute('addBook', 'BookCtrl', ['admin']);
 // Utils::addRoute('rmBook', 'BookCtrl', ['admin']);
 
+Utils::addRoute('categories', 'CategoryCtrl', ['admin']);
+Utils::addRoute('categoryform', 'CategoryEditCtrl', ['admin']);
+Utils::addRoute('savecategory', 'CategoryEditCtrl', ['admin']);
+// Utils::addRoute('categoryform', 'CategoryEditCtrl', ['admin']);
+
+
 // Utils::addRoute('extend', 'BookCtrl', ['user']);
