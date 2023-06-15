@@ -16,9 +16,10 @@ Utils::addRoute('userform', 'UserEditCtrl', ['admin']);
 Utils::addRoute('saveUser', 'UserEditCtrl', ['admin']);
 // Utils::addRoute('rmUser', 'UserEditCtrl', ['admin']);
 
-// Utils::addRoute('authors', 'AuthorCtrl');
-// Utils::addRoute('addAuthor', 'AuthorCtrl', ['admin']);
-// Utils::addRoute('rmAuthor', 'AuthorCtrl', ['admin']);
+Utils::addRoute('authors', 'AuthorCtrl', ['admin']);
+Utils::addRoute('authorform', 'AuthorEditCtrl', ['admin']);
+Utils::addRoute('saveauthor', 'AuthorEditCtrl', ['admin']);
+// Utils::addRoute('rmAuthor', 'AuthorEditCtrl', ['admin']);
 
 Utils::addRoute('titles', 'TitleCtrl');
 // Utils::addRoute('addTitle', 'TitleCtrl', ['admin']);
