@@ -20,7 +20,7 @@ class UserEditCtrl{
         }
         $this->form->generateView();
     }
-    public function action_saveUser(){
+    public function action_saveuser(){
         if($this->form->getAndValidateInputs()){
             if($this->form->saveData('user'))
                 App::getRouter()->redirectTo($conf->action_root.'users');

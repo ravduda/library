@@ -13,7 +13,7 @@ Utils::addRoute('logout', 'LoginCtrl', ['user', 'admin']);
 
 Utils::addRoute('users', 'UserCtrl', ['admin']);
 Utils::addRoute('userform', 'UserEditCtrl', ['admin']);
-Utils::addRoute('saveUser', 'UserEditCtrl', ['admin']);
+Utils::addRoute('saveuser', 'UserEditCtrl', ['admin']);
 // Utils::addRoute('rmUser', 'UserEditCtrl', ['admin']);
 
 Utils::addRoute('authors', 'AuthorCtrl', ['admin']);
@@ -28,8 +28,8 @@ Utils::addRoute('savetitle', 'TitleEditCtrl', ['admin']);
 // Utils::addRoute('rmtitle', 'TitleCtrl', ['admin']);
 
 // Utils::addRoute('books', 'BookCtrl');
-// Utils::addRoute('addBook', 'BookCtrl', ['admin']);
-// Utils::addRoute('rmBook', 'BookCtrl', ['admin']);
+// Utils::addRoute('addbook', 'BookCtrl', ['admin']);
+// Utils::addRoute('rmbook', 'BookCtrl', ['admin']);
 
 Utils::addRoute('categories', 'CategoryCtrl', ['admin']);
 Utils::addRoute('categoryform', 'CategoryEditCtrl', ['admin']);
