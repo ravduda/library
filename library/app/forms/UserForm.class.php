@@ -13,6 +13,7 @@ class UserForm extends FormTemplate{
     public FormElement $role;
 
     public function __construct(){
+        $this->saveActionName = "savetuser";
         $this->email = new FormElement("email", "email", "email", [
             'trim' => true,
             'required' => true,

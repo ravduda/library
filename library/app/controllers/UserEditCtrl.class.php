@@ -18,13 +18,13 @@ class UserEditCtrl{
         if($this->form->getAndValidateId()){
             $this->form->getFromDB("user");
         }
-        $this->form->generateView("UserEdit.tpl");
+        $this->form->generateView();
     }
     public function action_saveUser(){
         if($this->form->getAndValidateInputs()){
             if($this->form->saveData('user'))
                 App::getRouter()->redirectTo($conf->action_root.'users');
         }
-        $this->form->generateView("UserEdit.tpl");
+        $this->form->generateView();
     }
 }

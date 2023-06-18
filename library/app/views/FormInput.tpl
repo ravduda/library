@@ -13,7 +13,7 @@
     {foreach $inputElement->options as $opt}
     <option 
       value="{$opt[0]}"
-      {if $opt == $inputElement->value}
+      {if $opt[0] == $inputElement->value}
         selected
       {/if}
       >{$opt[1]}</option>

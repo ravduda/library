@@ -18,13 +18,13 @@ class CategoryEditCtrl{
         if($this->form->getAndValidateId()){
             $this->form->getFromDB("category");
         }
-        $this->form->generateView("CategoryEdit.tpl");
+        $this->form->generateView();
     }
     public function action_savecategory(){
         if($this->form->getAndValidateInputs()){
             if($this->form->saveData('category'))
                 App::getRouter()->redirectTo($conf->action_root.'categories');
         }
-        $this->form->generateView("CategoryEdit.tpl");
+        $this->form->generateView();
     }
 }

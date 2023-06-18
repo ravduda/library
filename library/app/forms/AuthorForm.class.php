@@ -10,6 +10,7 @@ class AuthorForm extends FormTemplate{
     public FormElement $lastname;
 
     public function __construct(){
+        $this->saveActionName = "saveauthor";
         $this->firstname = new FormElement("firstname", "text", "imie", [
             'trim' => true,
             'required' => true,

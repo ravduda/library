@@ -19,14 +19,14 @@ class HelloCtrl {
         $this->form = new UserForm();
     }
     public function action_hello() {
-        $this->form->generateView();
-        // $variable = 123;
+        // $this->form->generateView();
+        $variable = 123;
         
-        // App::getMessages()->addMessage(new Message("Hello world message", Message::INFO));
-        // Utils::addInfoMessage("Or even easier message :-)");
+        App::getMessages()->addMessage(new Message("Hello world message", Message::INFO));
+        Utils::addInfoMessage("Or even easier message :-)");
         
-        // App::getSmarty()->assign("value",$variable);        
-        // App::getSmarty()->display("Hello.tpl");
+        App::getSmarty()->assign("value",$variable);        
+        App::getSmarty()->display("Hello.tpl");
         
     }
     

@@ -18,13 +18,13 @@ class AuthorEditCtrl{
         if($this->form->getAndValidateId()){
             $this->form->getFromDB("author");
         }
-        $this->form->generateView("AuthorEdit.tpl");
+        $this->form->generateView();
     }
     public function action_saveauthor(){
         if($this->form->getAndValidateInputs()){
             if($this->form->saveData('author'))
                 App::getRouter()->redirectTo($conf->action_root.'authors');
         }
-        $this->form->generateView("AuthorEdit.tpl");
+        $this->form->generateView();
     }
 }

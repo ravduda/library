@@ -8,8 +8,9 @@ use core\Validator;
 use app\forms\FormElement;
 
 class FormTemplate {
-    public $formElements = array();
     public $id;
+    public $formElements = array();
+    public $saveActionName;
 
     public function getAndValidateId(){
         $v = new Validator;
@@ -60,7 +61,9 @@ class FormTemplate {
         }
     }
     public function generateView($name=null){
+        App::getSmarty()->assign('id', $this->id);
         App::getSmarty()->assign('elements', $this->formElements);
+        App::getSmarty()->assign('actionName', $this->saveActionName);
         if(empty($name)){
             App::getSmarty()->display("Form.tpl");
         }

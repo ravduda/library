@@ -18,13 +18,13 @@ class TitleEditCtrl{
         if($this->form->getAndValidateId()){
             $this->form->getFromDB("title");
         }
-        $this->form->generateView("TitleEdit.tpl");
+        $this->form->generateView();
     }
     public function action_saveTitle(){
         if($this->form->getAndValidateInputs()){
             if($this->form->saveData('title'))
                 App::getRouter()->redirectTo($conf->action_root.'titlestable');
         }
-        $this->form->generateView("TitleEdit.tpl");
+        $this->form->generateView();
     }
 }

@@ -13,7 +13,9 @@ class TitleForm extends FormTemplate{
 	public FormElement $author;
     public FormElement $category;
 
+
     public function __construct(){
+        $this->saveActionName = "savetitle";
         $this->name = new FormElement("name", "text", "tytuł", [
             'trim' => true,
             'required' => true,
@@ -61,8 +63,8 @@ class TitleForm extends FormTemplate{
         $this->formElements = [
             "name" => $this->name,
             "description" => $this->description,
-            "authors" => $this->author,
-            "category" => $this->category
+            "authorId" => $this->author,
+            "categoryId" => $this->category
         ];
     }
 }
