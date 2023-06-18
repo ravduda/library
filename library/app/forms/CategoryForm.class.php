@@ -6,11 +6,7 @@ use app\forms\FormElement;
 use app\forms\FormTemplate;
 
 class CategoryForm extends FormTemplate{
-	public FormElement $email;
-	public FormElement $pass;
-    public FormElement $firstname;
-    public FormElement $lastname;
-    public FormElement $role;
+	public FormElement $name;
 
     public function __construct(){
         $this->name = new FormElement("name", "text", "nazwa kategorii", [

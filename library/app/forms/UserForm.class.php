@@ -47,7 +47,7 @@ class UserForm extends FormTemplate{
         $this->role = new FormElement("role", "select", "rola", [
             'trim' => true,
             'required' => true,
-        ], ["user", "admin"]);
+        ], [["user", "user"], ["admin", "admin"]]);
 
         $this->formElements = [
             "email" => $this->email,
