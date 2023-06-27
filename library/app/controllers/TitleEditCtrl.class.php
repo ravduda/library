@@ -23,7 +23,7 @@ class TitleEditCtrl{
     public function action_saveTitle(){
         if($this->form->getAndValidateInputs()){
             if($this->form->saveData('title'))
-                App::getRouter()->redirectTo($conf->action_root.'titlestable');
+                App::getRouter()->redirectTo($conf->action_root.'titles');
         }
         $this->form->generateView();
     }

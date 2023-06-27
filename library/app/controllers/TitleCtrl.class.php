@@ -9,26 +9,7 @@ use core\ParamUtils;
 
 class TitleCtrl{
     private $records;
-    public function action_titles() {
-        try {
-            $this->records = App::getDB()->select("title", [
-                "[>]author" => ["title.authorId" =>"id"]
-            ],
-            [
-                "title.id",
-                "title.name",
-                "title.description",
-                "author.firstname",
-                "author.lastname",
-                    ]);
-        } catch (\PDOException $e) {
-            Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
-            if (App::getConf()->debug)
-                Utils::addErrorMessage($e->getMessage());
-        }
-        $this->generateView();
-    }
-    public function action_titlestable(){
+    public function action_titles(){
         try {
             $this->records = App::getDB()->select("title", [
                 "[>]author" => ["title.authorId" =>"id"],
@@ -49,16 +30,16 @@ class TitleCtrl{
             if (App::getConf()->debug)
                 Utils::addErrorMessage($e->getMessage());
         }
-        $this->generateTableView();
+        $this->generateView();
     }
-    function generateTableView(){
+    function generateView(){
         App::getSmarty()->assign('tableL', ["id", "tytuł", "autor", "kategoria"]);
         App::getSmarty()->assign('tableN', ["id", "titlename", "author", "name"]);
         App::getSmarty()->assign('tableR', $this->records);
-        App::getSmarty()->display("TitlesTable.tpl");
-    }
-    public function generateView(){
-        App::getSmarty()->assign('titles', $this->records);
+        App::getSmarty()->assign('tableB', [
+            ["action"=>"titleform", "icon"=>"edit.svg", "alt"=>"Edytuj"],
+            ["action"=>"titledelete", "icon"=>"delete.svg", "alt"=>"Usuń"]
+        ]);
         App::getSmarty()->display("Titles.tpl");
     }
 }

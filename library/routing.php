@@ -5,7 +5,7 @@ use core\Utils;
 
 Utils::addRoute('hello', 'HelloCtrl');
 
-App::getRouter()->setDefaultRoute('titles'); #default action
+App::getRouter()->setDefaultRoute('titleslist'); #default action
 App::getRouter()->setLoginRoute('login'); #action to forward if no permissions
 
 Utils::addRoute('login', 'LoginCtrl');
@@ -22,7 +22,6 @@ Utils::addRoute('saveauthor', 'AuthorEditCtrl', ['admin']);
 // Utils::addRoute('rmAuthor', 'AuthorEditCtrl', ['admin']);
 
 Utils::addRoute('titles', 'TitleCtrl');
-Utils::addRoute('titlestable', 'TitleCtrl');
 Utils::addRoute('titleform', 'TitleEditCtrl', ['admin']);
 Utils::addRoute('savetitle', 'TitleEditCtrl', ['admin']);
 // Utils::addRoute('rmtitle', 'TitleCtrl', ['admin']);
@@ -36,5 +35,6 @@ Utils::addRoute('categoryform', 'CategoryEditCtrl', ['admin']);
 Utils::addRoute('savecategory', 'CategoryEditCtrl', ['admin']);
 // Utils::addRoute('categoryform', 'CategoryEditCtrl', ['admin']);
 
+Utils::addRoute('titleslist', 'TitlesListCtrl');
 
 // Utils::addRoute('extend', 'BookCtrl', ['user']);
