@@ -26,8 +26,8 @@ Utils::addRoute('titleform', 'TitleEditCtrl', ['admin']);
 Utils::addRoute('savetitle', 'TitleEditCtrl', ['admin']);
 // Utils::addRoute('rmtitle', 'TitleCtrl', ['admin']);
 
-// Utils::addRoute('books', 'BookCtrl');
-// Utils::addRoute('addbook', 'BookCtrl', ['admin']);
+Utils::addRoute('books', 'BookCtrl');
+Utils::addRoute('addbook', 'BookCtrl', ['admin']);
 // Utils::addRoute('rmbook', 'BookCtrl', ['admin']);
 
 Utils::addRoute('categories', 'CategoryCtrl', ['admin']);
