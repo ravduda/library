@@ -38,7 +38,6 @@ class TitleCtrl{
         App::getSmarty()->assign('tableR', $this->records);
         App::getSmarty()->assign('tableB', [
             ["action"=>"titleform", "icon"=>"edit.svg", "alt"=>"Edytuj"],
-            ["action"=>"titledelete", "icon"=>"delete.svg", "alt"=>"Usuń"]
         ]);
         App::getSmarty()->display("Titles.tpl");
     }

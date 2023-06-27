@@ -24,7 +24,6 @@ class UserCtrl{
         App::getSmarty()->assign('tableR', $this->records);
         App::getSmarty()->assign('tableB', [
             ["action"=>"userform", "icon"=>"edit.svg", "alt"=>"Edytuj"],
-            ["action"=>"userdelete", "icon"=>"delete.svg", "alt"=>"Usuń"]
         ]);
         App::getSmarty()->display("Users.tpl");
     }

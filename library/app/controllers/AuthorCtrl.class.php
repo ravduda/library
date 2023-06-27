@@ -24,7 +24,6 @@ class AuthorCtrl{
         App::getSmarty()->assign('tableR', $this->records);
         App::getSmarty()->assign('tableB', [
             ["action"=>"authorform", "icon"=>"edit.svg", "alt"=>"Edytuj"],
-            ["action"=>"authordelete", "icon"=>"delete.svg", "alt"=>"Usuń"]
         ]);
         App::getSmarty()->display("Authors.tpl");
     }
