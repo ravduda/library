@@ -22,6 +22,11 @@ class CategoryCtrl{
         App::getSmarty()->assign('tableL', ["id", "kategoria"]);
         App::getSmarty()->assign('tableN', ["id", "name"]);
         App::getSmarty()->assign('tableR', $this->records);
+        App::getSmarty()->assign('tableB', [
+            ["action"=>"categoryform", "icon"=>"edit.svg", "alt"=>"Edytuj"],
+            ["action"=>"categorydelete", "icon"=>"delete.svg", "alt"=>"Usuń"]
+        ]);
+
         App::getSmarty()->display("Categories.tpl");
     }
 }
