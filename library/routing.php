@@ -33,4 +33,7 @@ Utils::addRoute('savecategory', 'CategoryEditCtrl', ['admin']);
 
 Utils::addRoute('titleslist', 'TitlesListCtrl');
 
+Utils::addRoute('borrowform', 'BorrowEditCtrl');
+Utils::addRoute('addborrowing', 'BorrowEditCtrl');
+
 // Utils::addRoute('extend', 'BookCtrl', ['user']);

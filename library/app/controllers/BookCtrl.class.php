@@ -59,7 +59,8 @@ class BookCtrl{
         App::getSmarty()->assign('tableN', ["id"]);
         App::getSmarty()->assign('tableR', $this->records);
         App::getSmarty()->assign('tableB', [
-            ["action"=>"categorydelete", "icon"=>"delete.svg", "alt"=>"Usuń"]
+            ["action"=>"bookdelete", "icon"=>"delete.svg", "alt"=>"Usuń"],
+            ["action"=>"borrowform", "icon"=>"borrow.svg", "alt"=>"Wypożycz"],
         ]);
 
         App::getSmarty()->display("Books.tpl");
