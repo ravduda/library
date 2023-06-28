@@ -14,6 +14,7 @@ Utils::addRoute('logout', 'LoginCtrl', ['user', 'admin']);
 Utils::addRoute('users', 'UserCtrl', ['admin']);
 Utils::addRoute('userform', 'UserEditCtrl', ['admin']);
 Utils::addRoute('saveuser', 'UserEditCtrl', ['admin']);
+Utils::addRoute('userdetails', 'UserDetailsCtrl', ['admin']);
 
 Utils::addRoute('authors', 'AuthorCtrl', ['admin']);
 Utils::addRoute('authorform', 'AuthorEditCtrl', ['admin']);

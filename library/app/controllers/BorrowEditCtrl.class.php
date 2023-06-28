@@ -22,7 +22,7 @@ class BorrowEditCtrl{
     public function action_addborrowing(){
         if($this->form->getAndValidateInputs()){
             if($this->form->saveData('borrow'))
-                App::getRouter()->redirectTo($conf->action_root.'books/'.$form->id);
+                App::getRouter()->redirectTo($conf->action_root.'userdetails/'.$this->form->user->value);
         }
         $this->form->generateView();
     }
