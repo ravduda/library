@@ -10,6 +10,7 @@ use app\forms\BorrowForm;
 
 class BorrowEditCtrl{
     private $form;
+    private $id;
     public function __construct() {
         $this->form = new BorrowForm();
     }
@@ -18,6 +19,9 @@ class BorrowEditCtrl{
         if($this->form->getAndValidateId()){
             $this->form->generateView();
         }
+        else{
+            App::getRouter()->redirectTo($conf->action_root.'titles');
+        }
     }
     public function action_addborrowing(){
         if($this->form->getAndValidateInputs()){
@@ -25,5 +29,30 @@ class BorrowEditCtrl{
                 App::getRouter()->redirectTo($conf->action_root.'userdetails/'.$this->form->user->value);
         }
         $this->form->generateView();
+    }
+    public function action_endborrowing(){
+        if($this->getAndValidateId()){
+            try {
+                $record = App::getDB()->update('borrow', [
+                    "returned" => true,
+                ], ["id" => $this->id]);
+            } catch (\PDOException $e) {
+                Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+                if (App::getConf()->debug)
+                    Utils::addErrorMessage($e->getMessage());
+            }
+            App::getRouter()->forwardTo($conf->action_root.'users');
+        }
+        else{
+            App::getRouter()->redirectTo($conf->action_root.'users');
+        }
+    }
+    public function getAndValidateId(){
+        $v = new Validator;
+        $this->id = $v->validateFromCleanURL(1, [
+            "trim" => true,
+            "int" => true,
+        ]);
+        return !empty($this->id);
     }
 }

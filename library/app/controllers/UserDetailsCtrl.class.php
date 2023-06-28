@@ -45,7 +45,7 @@ class UserDetailsCtrl{
         App::getSmarty()->assign('tableN', ["id", "start", "end", "returned"]);
         App::getSmarty()->assign('tableR', $this->records);
         App::getSmarty()->assign('tableB', [
-            // ["action"=>"userform", "icon"=>"edit.svg", "alt"=>"Edytuj"],
+            ["action"=>"endborrowing", "icon"=>"return.svg", "alt"=>"Zwróć"],
         ]);
         App::getSmarty()->display("UserDetails.tpl");
     }
