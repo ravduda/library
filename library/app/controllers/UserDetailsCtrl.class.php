@@ -9,9 +9,13 @@ use core\Validator;
 class UserDetailsCtrl{
     private $records;
     private $id;
+    private $user;
     public function action_userdetails(){
         if($this->getAndValidateId()){
             try {
+                $this->user = App::getDB()->get("user", "*", [
+                    "id" =>$this->id,
+                ]);
                 $this->records = App::getDB()->select("borrow", "*", [
                     "userId" => $this->id,
                 ]);
@@ -35,12 +39,14 @@ class UserDetailsCtrl{
         return !empty($this->id);
     }
     function generateView(){
+
+        App::getSmarty()->assign('user', $this->user);
         App::getSmarty()->assign('tableL', ["id", "rozpoczęcie wyporzyczenia", "koniec czasu", "czy zwrócono"]);
         App::getSmarty()->assign('tableN', ["id", "start", "end", "returned"]);
         App::getSmarty()->assign('tableR', $this->records);
         App::getSmarty()->assign('tableB', [
             // ["action"=>"userform", "icon"=>"edit.svg", "alt"=>"Edytuj"],
         ]);
-        App::getSmarty()->display("Users.tpl");
+        App::getSmarty()->display("UserDetails.tpl");
     }
 }
