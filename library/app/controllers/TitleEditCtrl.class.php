@@ -14,7 +14,7 @@ class TitleEditCtrl{
         $this->form = new TitleForm();
     }
 
-    public function action_Titleform(){
+    public function action_titleform(){
         if($this->form->getAndValidateId()){
             $this->form->getFromDB("title");
         }

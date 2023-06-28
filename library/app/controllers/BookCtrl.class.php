@@ -9,10 +9,14 @@ use core\Validator;
 class BookCtrl{
     private $id;
     private $records;
-
+    private $title;
+ 
     public function action_books(){
         if($this->validateId()){
             try {
+                $this->title = App::getDB()->get("title", "*", [
+                    "id" =>$this->id,
+                ]);
                 $this->records = App::getDB()->select("book", "*", [
                     "titleId" => $this->id,
                 ]);
@@ -55,11 +59,12 @@ class BookCtrl{
     }
     function generateView(){ 
         App::getSmarty()->assign('id', $this->id);
+        App::getSmarty()->assign('title', $this->title);
         App::getSmarty()->assign('tableL', ["id"]);
         App::getSmarty()->assign('tableN', ["id"]);
         App::getSmarty()->assign('tableR', $this->records);
         App::getSmarty()->assign('tableB', [
-            ["action"=>"bookdelete", "icon"=>"delete.svg", "alt"=>"Usuń"],
+            // ["action"=>"bookdelete", "icon"=>"delete.svg", "alt"=>"Usuń"],
             ["action"=>"borrowform", "icon"=>"borrow.svg", "alt"=>"Wypożycz"],
         ]);
 
