@@ -9,6 +9,7 @@ use core\Validator;
 class BookCtrl{
     private $id;
     private $records;
+    private $recordsAv;
     private $title;
  
     public function action_books(){
@@ -17,8 +18,15 @@ class BookCtrl{
                 $this->title = App::getDB()->get("title", "*", [
                     "id" =>$this->id,
                 ]);
-                $this->records = App::getDB()->select("book", "*", [
-                    "titleId" => $this->id,
+                // select book.id from book join borrow on book.id = borrow.bookId WHERE borrow.returned = false AND book.titleId = 2 group by id;
+                // ^ niedostępne z danego tytułu
+                // SELECT book.id from book where titleId = 2 EXCEPT select book.id from book join borrow on book.id = borrow.bookId WHERE borrow.returned = false AND book.titleId = 2 group by id;
+                // ^ dostępne z danego tytułu
+                $this->records = App::getDB()->query("SELECT book.id from book where titleId = :titleId EXCEPT select book.id from book join borrow on book.id = borrow.bookId WHERE borrow.returned = false AND book.titleId = :titleId group by id;",[
+                    ":titleId" => $this->id
+                ]);
+                $this->recordsAv = App::getDB()->query("SELECT book.id from book join borrow on book.id = borrow.bookId WHERE borrow.returned = false AND book.titleId = :titleId group by id;",[
+                    ":titleId" => $this->id
                 ]);
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
@@ -63,6 +71,7 @@ class BookCtrl{
         App::getSmarty()->assign('tableL', ["id"]);
         App::getSmarty()->assign('tableN', ["id"]);
         App::getSmarty()->assign('tableR', $this->records);
+        App::getSmarty()->assign('tableAvR', $this->recordsAv);
         App::getSmarty()->assign('tableB', [
             // ["action"=>"bookdelete", "icon"=>"delete.svg", "alt"=>"Usuń"],
             ["action"=>"borrowform", "icon"=>"borrow.svg", "alt"=>"Wypożycz"],
