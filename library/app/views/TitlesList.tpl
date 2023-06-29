@@ -5,7 +5,7 @@
   <div class="border rounded-lg">
     <img
       class="w-full"
-      src="https://wolnelektury.pl/media/book/cover_api_thumb/20-000-mil-podmorskiej-zeglugi_LP0CnaG.jpg"
+      src="{$t["img"]}"
     />
     <h1 class="text-4xl">{$t["name"]}</h1>
     <p>{$t["firstname"]} {$t["lastname"]}</p>

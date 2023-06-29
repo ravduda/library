@@ -28,4 +28,14 @@ function rel_url($params, $smarty)
 \core\App::getSmarty()->registerPlugin("function","rel_url", "rel_url");
 
 #assign variables
-#\core\App::getSmarty()->assign('variable',$variable);
+if(\core\RoleUtils::inRole("admin")){
+  $r = "admin";
+}
+else if(\core\RoleUtils::inRole("user")){
+  $r = "user";
+}
+else{
+  $r = "null";
+}
+
+\core\App::getSmarty()->assign('userrole',$r);

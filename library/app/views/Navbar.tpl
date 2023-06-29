@@ -31,14 +31,22 @@
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a>
+            {* <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a> *}
             <a href="{$conf->action_root}titleslist" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Główna</a>
+            {if $userrole == "admin"}
             <a href="{$conf->action_root}titles" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Tytuły</a>
             <a href="{$conf->action_root}users" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Użytkownicy</a>
             <a href="{$conf->action_root}authors" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Autorzy</a>
             <a href="{$conf->action_root}categories" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Kategorie</a>
-            <a href="{$conf->action_root}login" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Zaloguj</a>
-            <a href="{$conf->action_root}logout" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Wyloguj</a>
+            {/if}
+            {if $userrole == "user"}
+            <a href="{$conf->action_root}showprofile" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Profil</a>
+            {/if}
+            {if $userrole == "null"}
+              <a href="{$conf->action_root}login" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Zaloguj</a>
+            {else}
+              <a href="{$conf->action_root}logout" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Wyloguj</a>
+            {/if}
           </div>
         </div>
       </div>

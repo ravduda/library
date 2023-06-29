@@ -18,6 +18,7 @@ class TitlesListCtrl{
                 "title.id",
                 "title.name",
                 "title.description",
+                "title.img",
                 "author.firstname",
                 "author.lastname",
                     ]);
