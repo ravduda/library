@@ -1,6 +1,6 @@
 {{extends file="Main.tpl"}}
 {block name="content"}
-    <form action="{$conf->action_root}{$actionName}/{$id}" method="post">
+    <form action="{$conf->action_root}{$actionName}/{$id}" method="post" enctype="multipart/form-data">
         {foreach $elements as $el}
             {include file="FormInput.tpl" inputElement=$el}
         {/foreach}

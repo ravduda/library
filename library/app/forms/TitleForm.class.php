@@ -12,6 +12,7 @@ class TitleForm extends FormTemplate{
     public FormElement $description;
 	public FormElement $author;
     public FormElement $category;
+    public FormElement $img;
 
 
     public function __construct(){
@@ -60,11 +61,14 @@ class TitleForm extends FormTemplate{
             if (App::getConf()->debug)
                 Utils::addErrorMessage($e->getMessage());
         }
+        $this->img = new FormElement("img", "file", "okładka", []);
+
         $this->formElements = [
             "name" => $this->name,
             "description" => $this->description,
             "authorId" => $this->author,
-            "categoryId" => $this->category
+            "categoryId" => $this->category,
+            "img" => $this->img
         ];
     }
 }

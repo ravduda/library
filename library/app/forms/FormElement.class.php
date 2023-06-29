@@ -4,6 +4,7 @@ namespace app\forms;
 
 use core\Utils;
 use core\Validator;
+use app\controllers\FileValidator;
 
 class FormElement {
     public $name;
@@ -23,7 +24,12 @@ class FormElement {
     }
 
     public function getAndValidate(){
-        $v = new Validator();
-        $this->value = $v->validateFromPost($this->name, $this->validationRules);
+        if($this->type == "file"){
+            $v = new FileValidator();
+            $this->value = $v->validateFileFromRequest();
+        }else{
+            $v = new Validator();
+            $this->value = $v->validateFromPost($this->name, $this->validationRules);
+        }
     }
 }

@@ -25,6 +25,12 @@ class TitleEditCtrl{
             if($this->form->saveData('title'))
                 App::getRouter()->redirectTo($conf->action_root.'titles');
         }
+        else{
+            
+            set_error_handler(function() { /* ignore errors */ });
+            unlink(App::getConf()->root_path."/public".$this->form->img->value);
+            restore_error_handler();
+        }
         $this->form->generateView();
     }
 }
