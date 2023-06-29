@@ -5,6 +5,7 @@ namespace app\controllers;
 use core\App;
 use core\Utils;
 use core\RoleUtils;
+use core\SessionUtils;
 use core\ParamUtils;
 use app\forms\LoginForm;
 
@@ -17,7 +18,7 @@ class LoginCtrl{
     }
     public function action_login() {
         if($this->validate()){
-            App::getRouter()->redirectTo("hello");
+            App::getRouter()->redirectTo("titleslist");
         }
         else{
             $this->generateView();
@@ -44,12 +45,25 @@ class LoginCtrl{
         if (App::getMessages()->isError())
             return false;
         
-        if($this->form->login == "admin" && $this->form->pass == "admin"){
-            RoleUtils::addRole("admin");
+        try {
+            $record = App::getDB()->get('user', "*", [
+                "email" => $this->form->login,
+                "pass" => $this->form->pass,
+            ]);
+            
+            if(!empty($record)){
+                RoleUtils::addRole($record['role']);
+                SessionUtils::store("id", $record->id);
+            }
+            else{
+                Utils::addErrorMessage('Niepoprawny login lub hasło');
+            }
+        } catch (\PDOException $e) {
+            Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
+            if (App::getConf()->debug)
+                Utils::addErrorMessage($e->getMessage());
         }
-        else{
-            Utils::addErrorMessage('Niepoprawny login lub hasło');
-        }
+        
 
         return !App::getMessages()->isError();
     }

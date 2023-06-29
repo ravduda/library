@@ -38,6 +38,7 @@
             <a href="{$conf->action_root}authors" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Autorzy</a>
             <a href="{$conf->action_root}categories" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Kategorie</a>
             <a href="{$conf->action_root}login" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Zaloguj</a>
+            <a href="{$conf->action_root}logout" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Wyloguj</a>
           </div>
         </div>
       </div>

@@ -20,7 +20,7 @@ Utils::addRoute('authors', 'AuthorCtrl', ['admin']);
 Utils::addRoute('authorform', 'AuthorEditCtrl', ['admin']);
 Utils::addRoute('saveauthor', 'AuthorEditCtrl', ['admin']);
 
-Utils::addRoute('titles', 'TitleCtrl');
+Utils::addRoute('titles', 'TitleCtrl', ['admin']);
 Utils::addRoute('titleform', 'TitleEditCtrl', ['admin']);
 Utils::addRoute('savetitle', 'TitleEditCtrl', ['admin']);
 
