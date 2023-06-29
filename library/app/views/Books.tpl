@@ -13,5 +13,9 @@
     
 <a href="{$conf->action_url}titleform/{$id}">Edytuj książkę</a>
 <a href="{$conf->action_url}addbook/{$id}">Dodaj książkę</a>
+<p class="font-bold">Dostępne książki:</p>
 {{include file="Table.tpl"}}
+<p class="font-bold">Niedostępne książki:</p>
+
+{{include file="Table.tpl" tableR=$tableAvR tableB=[]}}
 {/block}
