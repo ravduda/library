@@ -53,7 +53,7 @@ class LoginCtrl{
             
             if(!empty($record)){
                 RoleUtils::addRole($record['role']);
-                SessionUtils::store("id", $record->id);
+                SessionUtils::store("id", $record["id"]);
             }
             else{
                 Utils::addErrorMessage('Niepoprawny login lub hasło');

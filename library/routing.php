@@ -38,4 +38,6 @@ Utils::addRoute('borrowform', 'BorrowEditCtrl');
 Utils::addRoute('addborrowing', 'BorrowEditCtrl');
 Utils::addRoute('endborrowing', 'BorrowEditCtrl');
 
-// Utils::addRoute('extend', 'BookCtrl', ['user']);
+Utils::addRoute('showprofile', 'ProfileCtrl', ['user']);
+
+Utils::addRoute('extend', 'ProfileCtrl', ['user']);
