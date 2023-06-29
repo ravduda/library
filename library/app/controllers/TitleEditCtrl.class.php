@@ -7,11 +7,17 @@ use core\Utils;
 use core\ParamUtils;
 use core\Validator;
 use app\forms\TitleForm;
+use app\forms\TitleFormImg;
 
 class TitleEditCtrl{
     private $form;
     public function __construct() {
-        $this->form = new TitleForm();
+        if($this->getAndValidateId()){
+            $this->form = new TitleForm();
+        }
+        else{
+            $this->form = new TitleFormImg();
+        }
     }
 
     public function action_titleform(){
@@ -32,5 +38,13 @@ class TitleEditCtrl{
             restore_error_handler();
         }
         $this->form->generateView();
+    }
+    public function getAndValidateId(){
+        $v = new Validator;
+        $id = $v->validateFromCleanURL(1, [
+            "trim" => true,
+            "int" => true,
+        ]);
+        return !empty($id);
     }
 }

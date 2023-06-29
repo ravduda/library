@@ -68,7 +68,6 @@ class TitleForm extends FormTemplate{
             "description" => $this->description,
             "authorId" => $this->author,
             "categoryId" => $this->category,
-            "img" => $this->img
         ];
     }
 }
