@@ -63,7 +63,7 @@ class ProfileCtrl{
     }
     function generateView(){
         App::getSmarty()->assign('tableL', ["id", "tytuł", "autor", "kategoria", "koniec wypożyczenia"]);
-        App::getSmarty()->assign('tableN', ["id", "title", "firstname", "category", "end"]);
+        App::getSmarty()->assign('tableN', ["id", "title", "lastname", "category", "end"]);
         App::getSmarty()->assign('tableR', $this->records);
         App::getSmarty()->assign('tableB', [
             ["action"=>"extend", "icon"=>"borrow.svg", "alt"=>"Edytuj"],
