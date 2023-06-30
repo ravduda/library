@@ -18,6 +18,7 @@ class UserDetailsCtrl{
                 ]);
                 $this->records = App::getDB()->select("borrow", "*", [
                     "userId" => $this->id,
+                    "returned" => false,
                 ]);
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
@@ -27,7 +28,7 @@ class UserDetailsCtrl{
             $this->generateView();
         }
         else{
-            App::getRouter()->redirectTo($conf->action_root.'users');
+            App::getRouter()->redirectTo('users');
         }
     }
     public function getAndValidateId(){
@@ -41,8 +42,8 @@ class UserDetailsCtrl{
     function generateView(){
 
         App::getSmarty()->assign('user', $this->user);
-        App::getSmarty()->assign('tableL', ["id", "rozpoczęcie wyporzyczenia", "koniec czasu", "czy zwrócono"]);
-        App::getSmarty()->assign('tableN', ["id", "start", "end", "returned"]);
+        App::getSmarty()->assign('tableL', ["id", "rozpoczęcie wyporzyczenia", "koniec czasu"]);
+        App::getSmarty()->assign('tableN', ["id", "start", "end"]);
         App::getSmarty()->assign('tableR', $this->records);
         App::getSmarty()->assign('tableB', [
             ["action"=>"endborrowing", "icon"=>"return.svg", "alt"=>"Zwróć"],

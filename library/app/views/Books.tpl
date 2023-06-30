@@ -3,7 +3,7 @@
     <div class="border rounded-lg w-1/5 mt-3">
     <img
       class=""
-      src="https://wolnelektury.pl/media/book/cover_api_thumb/20-000-mil-podmorskiej-zeglugi_LP0CnaG.jpg"
+      src="{$title["img"]}"
     />
     <h1 class="text-4xl">{$title["name"]}</h1>
     </div>

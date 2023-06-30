@@ -20,13 +20,13 @@ class BorrowEditCtrl{
             $this->form->generateView();
         }
         else{
-            App::getRouter()->redirectTo($conf->action_root.'titles');
+            App::getRouter()->redirectTo('titles');
         }
     }
     public function action_addborrowing(){
         if($this->form->getAndValidateInputs()){
             if($this->form->saveData('borrow'))
-                App::getRouter()->redirectTo($conf->action_root.'userdetails/'.$this->form->user->value);
+                App::getRouter()->redirectTo('userdetails/'.$this->form->user->value);
         }
         $this->form->generateView();
     }
@@ -41,10 +41,10 @@ class BorrowEditCtrl{
                 if (App::getConf()->debug)
                     Utils::addErrorMessage($e->getMessage());
             }
-            App::getRouter()->forwardTo($conf->action_root.'users');
+            App::getRouter()->redirectTo('users');
         }
         else{
-            App::getRouter()->redirectTo($conf->action_root.'users');
+            App::getRouter()->redirectTo('users');
         }
     }
     public function getAndValidateId(){
