@@ -20,14 +20,14 @@ class TitleForm extends FormTemplate{
         $this->name = new FormElement("name", "text", "tytuł", [
             'trim' => true,
             'required' => true,
-            'max_length' => 40,
+            'max_length' => 150,
             'required_message' => 'Podaj tytuł',
             'validator_message' => 'Długoś tytułu nie nie może przekraczać 40 znaków'
         ]);
         $this->description = new FormElement("description", "text", "opis", [
             'trim' => true,
             'required' => true,
-            'max_length' => 200,
+            'max_length' => 3000,
             'required_message' => 'Podaj opis',
             'validator_message' => 'Długoś opisu nie nie może przekraczać 200 znaków'
         ]);

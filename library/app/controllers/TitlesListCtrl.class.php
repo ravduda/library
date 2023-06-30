@@ -16,9 +16,8 @@ class TitlesListCtrl{
     public function action_titleslist() {
         $where = ["LIMIT"=>[0,$this->titlesOnOnePage]];
         if($this->getAndValidatePage()){
-            $where = ["LIMIT"=>[($this->page-1)*$this->titlesOnOnePage,($this->page)*$this->titlesOnOnePage]];
+            $where = ["LIMIT"=>[($this->page-1)*$this->titlesOnOnePage,$this->titlesOnOnePage]];
         }
-
         try {
             $this->records = App::getDB()->select("title", [
                 "[>]author" => ["title.authorId" =>"id"]
@@ -32,9 +31,16 @@ class TitlesListCtrl{
                 "author.lastname",
             ],
             $where);
-            $this->isNext = App::getDB()->select("title", "*",[
-                "LIMIT"=>[($this->page*$this->titlesOnOnePage),($this->page*$this->titlesOnOnePage)+1]
-            ]);
+            if(!empty($this->page)){
+                $this->isNext = App::getDB()->select("title", "*",[
+                    "LIMIT"=>[($this->page*$this->titlesOnOnePage),($this->page*$this->titlesOnOnePage)+1]
+                ]);
+            }
+            else{
+                $this->isNext = App::getDB()->select("title", "*",[
+                    "LIMIT"=>[$this->titlesOnOnePage,$this->titlesOnOnePage+1]
+                ]);
+            }
         } catch (\PDOException $e) {
             Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
             if (App::getConf()->debug)
