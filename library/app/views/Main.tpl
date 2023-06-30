@@ -18,7 +18,7 @@
   </head>
   <body>
     {{include file="Navbar.tpl"}}
-    <div class="max-w-screen-xl m-auto">
+    <div class="max-w-screen-xl m-auto min-h-screen">
       {block name=content} {/block} {block name=messages} {if
       $msgs->isMessage()}
       <div class="messages bottom-margin">
@@ -34,5 +34,6 @@
       </div>
       {/if} {/block}
     </div>
+    {{include file="Footer.tpl"}}
   </body>
 </html>

@@ -21,6 +21,7 @@ class FormTemplate {
         return !empty($this->id);
     }
     public function getAndValidateInputs(){
+        $this->getAndValidateId();
         foreach(array_keys($this->formElements) as $key){
             $this->formElements[$key]->getAndValidate();
         }
