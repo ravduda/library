@@ -1,0 +1,1 @@
+<a class="p-3 border rounded inline-block my-2 bg-gray-100 hover:bg-gray-300" href="{$linkhref}">{$linklabel}</a>
