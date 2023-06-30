@@ -16,9 +16,17 @@ class UserDetailsCtrl{
                 $this->user = App::getDB()->get("user", "*", [
                     "id" =>$this->id,
                 ]);
-                $this->records = App::getDB()->select("borrow", "*", [
-                    "userId" => $this->id,
-                    "returned" => false,
+                $this->records = App::getDB()->select("borrow", [
+                    "[>]book" => ["borrow.bookId" =>"id"],
+                    "[>]title" => ["book.titleId" =>"id"],
+                ], [
+                    "borrow.id",
+                    "borrow.start",
+                    "borrow.end",
+                    "title.name",
+                ], [
+                    "borrow.userId" => $this->id,
+                    "borrow.returned" => false,
                 ]);
             } catch (\PDOException $e) {
                 Utils::addErrorMessage('Wystąpił błąd podczas pobierania rekordów');
@@ -42,8 +50,8 @@ class UserDetailsCtrl{
     function generateView(){
 
         App::getSmarty()->assign('user', $this->user);
-        App::getSmarty()->assign('tableL', ["id", "rozpoczęcie wyporzyczenia", "koniec czasu"]);
-        App::getSmarty()->assign('tableN', ["id", "start", "end"]);
+        App::getSmarty()->assign('tableL', ["id", "tytuł", "rozpoczęcie wyporzyczenia", "koniec czasu"]);
+        App::getSmarty()->assign('tableN', ["id", "name", "start", "end"]);
         App::getSmarty()->assign('tableR', $this->records);
         App::getSmarty()->assign('tableB', [
             ["action"=>"endborrowing", "icon"=>"return.svg", "alt"=>"Zwróć"],
