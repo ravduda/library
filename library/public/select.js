@@ -5,3 +5,11 @@ $(document).ready(function () {
   $("#userId").select2();
   $("#test").select2();
 });
+function fetchContent(url, idToReload) {
+  fetch(url)
+    .then((response) => response.text())
+    .then((data) => {
+      console.log(data);
+      $(idToReload).html(data);
+    });
+}
